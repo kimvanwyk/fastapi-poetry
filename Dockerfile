@@ -6,8 +6,6 @@ RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-
     ln -s /opt/poetry/bin/poetry && \
     poetry config virtualenvs.create false
 
-RUN mkdir /app
-
 WORKDIR /app
 
 # Install Pipfile contents system-wide
