@@ -8,7 +8,7 @@ RUN curl -sSL https://install.python-poetry.org | POETRY_HOME=/opt/poetry python
 
 WORKDIR /app
 
-RUN echo "Tag:" >> /manifest.txt; echo $(date +%y%m%d)-fastapi$(python -c "import fastapi; print(fastapi.__version__)")-python$(python --version | cut -d " " -f2)-poetry$(poetry --version | cut -d " " -f3) >> /manifest.txt; echo "\nVersions:" >> /manifest.txt; echo $(python --version) >> /manifest.txt; echo $(pip --version) >> /manifest.txt; echo $(poetry --version) >> /manifest.txt; echo "\nPackages:" >> /manifest.txt; echo $(pip freeze) >> /manifest.txt; 
+RUN echo "Tag:" >> /manifest.txt; echo $(date +%y%m%d)-fastapi$(python -c "import fastapi; print(fastapi.__version__)")-python$(python --version | cut -d " " -f2)-poetry$(poetry --version | cut -d " " -f3  | cut -d ")" -f1) >> /manifest.txt; echo "\nVersions:" >> /manifest.txt; echo $(python --version) >> /manifest.txt; echo $(pip --version) >> /manifest.txt; echo $(poetry --version) >> /manifest.txt; echo "\nPackages:" >> /manifest.txt; echo $(pip freeze) >> /manifest.txt; 
 
 # Install Pipfile contents system-wide
 ONBUILD COPY pyproject.toml pyproject.toml
