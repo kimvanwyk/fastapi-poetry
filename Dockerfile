@@ -12,4 +12,4 @@ RUN echo "Tag:" >> /manifest.txt; echo $(date +%y%m%d)-fastapi$(python -c "impor
 
 # Install Pipfile contents system-wide
 ONBUILD COPY pyproject.toml pyproject.toml
-+ONBUILD RUN poetry install && rm pyproject.toml && rm poetry.lock
+ONBUILD RUN poetry install && rm pyproject.toml && rm poetry.lock
