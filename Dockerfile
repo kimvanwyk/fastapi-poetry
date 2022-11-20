@@ -1,4 +1,4 @@
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.7
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.9
 
 # Install Poetry
 RUN curl -sSL https://install.python-poetry.org | POETRY_HOME=/opt/poetry python3 - && \
@@ -12,4 +12,4 @@ RUN echo "Tag:" >> /manifest.txt; echo $(date +%y%m%d)-fastapi$(python -c "impor
 
 # Install Pipfile contents system-wide
 ONBUILD COPY pyproject.toml pyproject.toml
-ONBUILD RUN poetry install && poetry cache clear --all -n pypi && poetry cache clear --all -n . && rm pyproject.toml && rm poetry.lock
++ONBUILD RUN poetry install && rm pyproject.toml && rm poetry.lock
